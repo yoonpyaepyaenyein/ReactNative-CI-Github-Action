@@ -6,6 +6,24 @@
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
       buildArchitectures = "Automatic">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.dev&quot; &gt; /tmp/envfile&#10;&#10;&quot;${SRCROOT}/../node_modules/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb&quot; &quot;${SRCROOT}/..&quot; &quot;${SRCROOT}/tmp.xcconfig&quot;&#10; &#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "436F0DEF2D9E46A4002C2192"
+                     BuildableName = "TestingAppDev.app"
+                     BlueprintName = "TestingAppDev"
+                     ReferencedContainer = "container:TestingApp.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,9 +33,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "TestingApp.app"
-               BlueprintName = "TestingApp"
+               BlueprintIdentifier = "436F0DEF2D9E46A4002C2192"
+               BuildableName = "TestingAppDev.app"
+               BlueprintName = "TestingAppDev"
                ReferencedContainer = "container:TestingApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TestingApp.app"
-            BlueprintName = "TestingApp"
+            BlueprintIdentifier = "436F0DEF2D9E46A4002C2192"
+            BuildableName = "TestingAppDev.app"
+            BlueprintName = "TestingAppDev"
             ReferencedContainer = "container:TestingApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TestingApp.app"
-            BlueprintName = "TestingApp"
+            BlueprintIdentifier = "436F0DEF2D9E46A4002C2192"
+            BuildableName = "TestingAppDev.app"
+            BlueprintName = "TestingAppDev"
             ReferencedContainer = "container:TestingApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
