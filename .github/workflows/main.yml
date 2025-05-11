@@ -29,7 +29,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 16.x
 
       - name: Install dependencies
         run: yarn install
@@ -48,13 +48,10 @@ jobs:
           ./gradlew bundleRelease
 
       - name: Upload APK Release - ${{ env.repository_name }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - APK(s) release generated
           path: android/app/build/outputs/apk/release/
 
       - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.date_today }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
-          path: android/app/build/outputs/bundle/release/
+        uses: actions/upload
