@@ -117,7 +117,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             matchingFallbacks = ['debug', 'release']
         }
         release {
