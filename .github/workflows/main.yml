@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - APK(s) release generated
-          path: android/app/build/outputs/apk/dev/debug/
+          path: android/app/build/outputs/apk/dev/
 
       - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
         uses: actions/upload-artifact@v4
