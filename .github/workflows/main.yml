@@ -34,9 +34,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      - name: Decode keystore (macOS-compatible)
+      - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/my-upload-key.keystore
+          echo -n "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/my-upload-key.keystore
 
       - name: Build Android APK
         run: |
