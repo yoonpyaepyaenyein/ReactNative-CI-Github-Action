@@ -47,11 +47,14 @@ jobs:
           cd android
           ./gradlew bundleRelease
 
-      - name: Upload APK Release - ${{ env.repository_name }}
+      - name: Upload APK Release
         uses: actions/upload-artifact@v3.1.2
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - APK(s) release generated
           path: android/app/build/outputs/apk/release/
 
-      - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
-        uses: actions/upload
+      - name: Upload AAB (App Bundle) Release
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: ${{ env.date_today }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
+          path: android/app/build/outputs/bundle/release/
