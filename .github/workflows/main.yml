@@ -34,6 +34,11 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
+      - name: Decode keystore
+        run: |
+         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/app/my-upload-key.keystore
+
+
       - name: Build Android APK
         run: |
           cd android
@@ -50,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - APK(s) release generated
-          path: android/app/build/outputs/apk/production
+          path: android/app/build/outputs/apk/production/release
 
       - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
         uses: actions/upload-artifact@v4
