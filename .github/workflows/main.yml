@@ -35,16 +35,17 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Decode keystore
-        run: echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-upload-key-jks.keystore
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-upload-key-jks.keystore
 
       - name: Set up Gradle properties
         run: |
-          echo "MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore" >> android/gradle.properties
-          echo "MYAPP_UPLOAD_KEY_ALIAS=$KEY_ALIAS" >> android/gradle.properties
-          echo "MYAPP_UPLOAD_STORE_PASSWORD=$KEYSTORE_PASSWORD" >> android/gradle.properties
-          echo "MYAPP_UPLOAD_KEY_PASSWORD=$KEY_PASSWORD" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_STORE_FILE=my-upload-key-jks.keystore" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_KEY_ALIAS=my-key-alias" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_STORE_PASSWORD=000000" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_KEY_PASSWORD=000000" >> android/gradle.properties
 
-      - name: Build Android APK
+      - name: Build Android APKm
         run: |
           cd android
           chmod 0755 gradlew
@@ -60,10 +61,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - APK(s) release generated
-          path: android/app/build/outputs/apk/production/release
+          path: android/app/build/outputs/apk/release/*.apk
 
       - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.date_today }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
-          path: android/app/build/outputs/bundle/productionRelease/
+          path: android/app/build/outputs/bundle/release/*.aab
