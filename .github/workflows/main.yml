@@ -37,6 +37,12 @@ jobs:
       - name: Decode keystore
         run: echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-upload-key.keystore
 
+      - name: Set up Gradle properties
+        run: |
+          echo "MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_KEY_ALIAS=$KEY_ALIAS" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_STORE_PASSWORD=$KEYSTORE_PASSWORD" >> android/gradle.properties
+          echo "MYAPP_UPLOAD_KEY_PASSWORD=$KEY_PASSWORD" >> android/gradle.properties
 
       - name: Build Android APK
         run: |
