@@ -35,8 +35,8 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Decode keystore
-        run: |
-          echo -n "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/my-upload-key.keystore
+        run: echo "$KEYSTORE_BASE64" | base64 -d > android/app/my-upload-key.keystore
+
 
       - name: Build Android APK
         run: |
